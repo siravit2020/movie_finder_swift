@@ -10,25 +10,19 @@ import SwiftUI
 
 @main
 struct MovieFinderApp: App {
-    static var shared: MovieFinderApp!
+
     let modelContainer: ModelContainer
-    
-    static let sharedModelContainer: ModelContainer = {
-        do {
-            return try ModelContainer(for: WatchlistMovie.self)
-        } catch {
-            fatalError("Failed to initialize ModelContainer: \(error)")
-        }
-    }()
 
     init() {
         // ตั้งค่า Kingfisher cache
         KingfisherConfig.setup()
 
-        // ใช้ shared ModelContainer
-        modelContainer = MovieFinderApp.sharedModelContainer
-        
-        MovieFinderApp.shared = self
+        // สร้าง ModelContainer สำหรับ SwiftData
+        do {
+            modelContainer = try ModelContainer(for: WatchlistMovie.self)
+        } catch {
+            fatalError("Failed to initialize ModelContainer: \(error)")
+        }
     }
 
     var body: some Scene {

@@ -1,0 +1,20 @@
+//
+//  โetchNowShowingMoviesUsecase.swift
+//  MovieFinder
+//
+//  Created by Siravit Pichphol on 5/8/2568 BE.
+//
+
+import Foundation
+
+class FetchNowShowingMoviesUseCase {
+    private let repository: HomeRepositoryProtocol
+
+    init(repository: HomeRepositoryProtocol) {
+        self.repository = repository
+    }
+
+    func execute(params: MovieRequestParams) async throws -> MovieResponse {
+        return try await repository.fetchNowShowingMovies(params: params)
+    }
+}

@@ -1,0 +1,12 @@
+//
+//  Config.xcconfig
+//  MovieFinder
+//
+//  Created by Siravit Pichphol on 18/7/2568 BE.
+//
+
+SLASH = /
+
+API_KEY =eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4ZjU3NjJmZmM3NjZjNTMxNDgyNjY5Mzg0MmE4NDA2ZSIsIm5iZiI6MTcxOTgzNzMwNC43NTUsInN1YiI6IjY2ODJhMjc4YzAwMTQ5MGI3NDNhZTJkOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.tRoz5XX5w5-lKYnuvdLMZZ6lOmiWIv4yT7o2ofav3Jk
+API_BASE_URL = https:$(SLASH)$(SLASH)api.themoviedb.org/3/
+API_BASE_IMAGE_URL = https:$(SLASH)$(SLASH)image.tmdb.org/t/p/
