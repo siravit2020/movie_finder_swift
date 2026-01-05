@@ -14,59 +14,18 @@ struct HomeView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(alignment: .leading, ) {
+                VStack(alignment: .leading) {
+                    if viewModel.isLoading {
+                        HomeSkeletonView()
+                    } else {
+                        AccountSection()
 
-                    AccountSection()
-
-                    HeaderSection(
-                        text: "Now Showing",
-                        onSeeMore: { NowShowingView() }
-                    )
-
-                    if let movieList = viewModel.nowShowing {
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack(alignment: .top, spacing: .Spacing.space16) {
-                                ForEach(movieList.results) { movie in
-                                    NavigationLink {
-                                        MovieDetailScreen(movieId: movie.id)
-                                    } label: {
-                                        MovieListItem(movie: movie).frame(
-                                            width: 150
-                                        )
-                                    }
-
-                                }
-                            }
-                            .padding(.horizontal, .Spacing.space24).padding(
-                                .vertical,
-                                .Spacing.space16
-                            )
+                        if let movieList = viewModel.nowShowing {
+                            HomeNowShowing(movieList: movieList)
                         }
-                    }
 
-                    HeaderSection(
-                        text: "Popular",
-                        onSeeMore: { PopularMovieView() }
-                    )
-
-                    if let movieList = viewModel.nowShowing {
-                        ScrollView(.vertical, showsIndicators: false) {
-                            VStack(
-                                alignment: .leading,
-                                spacing: .Spacing.space16
-                            ) {
-                                ForEach(movieList.results) { movie in
-                                    NavigationLink {
-                                        MovieDetailScreen(movieId: movie.id)
-                                    } label: {
-                                        MovieRow(movie: movie)
-                                    }
-                                }
-                            }
-                            .padding(.horizontal, .Spacing.space24).padding(
-                                .vertical,
-                                .Spacing.space16
-                            )
+                        if let movieList = viewModel.popular {
+                            HomePopular(movieList: movieList)
                         }
                     }
                 }
@@ -78,7 +37,9 @@ struct HomeView: View {
             )
             .background(Color.primaryBackground)
             .task {
-                await viewModel.loadMovies()
+                if viewModel.nowShowing == nil || viewModel.popular == nil {
+                    await viewModel.loadMovies()
+                }
             }
         }
 

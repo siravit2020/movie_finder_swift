@@ -15,6 +15,8 @@ class FetchNowShowingMoviesUseCase {
     }
 
     func execute(params: MovieRequestParams) async throws -> MovieResponse {
-        return try await repository.fetchNowShowingMovies(params: params)
+        return try await repository.fetchNowShowingMovies(
+            params: params
+        )
     }
 }

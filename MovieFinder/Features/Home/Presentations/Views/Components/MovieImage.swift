@@ -11,10 +11,6 @@ import SwiftUI
 struct MovieImage: View {
     var url: URL?
 
-    // ไม่ต้องมี width และ height ที่เป็น property แล้ว
-    // private var width: CGFloat = 150 ... (ลบออก)
-    // private var height: CGFloat { ... } (ลบออก)
-
     private var cornerRadius: CGFloat {
         12
     }
@@ -36,10 +32,10 @@ struct MovieImage: View {
                     .aspectRatio(contentMode: .fill)
                     .frame(width: geo.size.width, height: height)
                     .cornerRadius(cornerRadius)
-                    .blur(radius: 20)
+                    .blur(radius: 8)
                     .opacity(0.8)
                     .scaleEffect(1)
-                    .offset(y: 8)
+                    .offset(y: 2)
 
                 // --- รูปภาพหลัก ---
                 KFImage(url)
@@ -66,8 +62,10 @@ struct MovieImage: View {
 
     if let firstMovie = movieResponse.results.first {
         MovieImage(url: firstMovie.posterURL)
-            .padding()
-            .background(Color.primaryBackground)
+            .padding(40)
+            .background(Color.primaryBackground).frame(
+                width: 300
+            )
     } else {
         Text("ไม่พบข้อมูลหนังในไฟล์ JSON")
     }

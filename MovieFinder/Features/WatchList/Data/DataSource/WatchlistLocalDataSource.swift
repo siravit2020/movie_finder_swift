@@ -8,6 +8,7 @@
 import Foundation
 import SwiftData
 
+@MainActor
 protocol WatchlistDataSource {
     func add(_ movie: WatchlistMovie) async throws
     func remove(id: Int) async throws

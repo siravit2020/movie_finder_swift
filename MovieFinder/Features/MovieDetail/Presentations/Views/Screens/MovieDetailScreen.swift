@@ -20,12 +20,10 @@ struct MovieDetailScreen: View {
             NavigationStack {
                 ScrollView {
                     if viewModel.isLoading {
-                        VStack(alignment: .center) {
-                            Spacer()
-                            ProgressView("Loading...")
-                            Spacer()
-                        }
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        MovieDetailSkeletonView(
+                            maxWidth: geometry.size.width,
+                            maxHeight: geometry.size.height
+                        )
                     } else if let movie = viewModel.movieDetail {
                         VStack(alignment: .leading, spacing: 0) {
                             if let backdropURL = movie.backdropURL {
@@ -175,17 +173,18 @@ struct MovieDetailScreen: View {
                                 } label: {
                                     Text("Remove from Watchlist")
                                         .foregroundStyle(
-                                            .white
+                                            .textPrimary
                                         )
                                         .buttonLabelStyle()
                                 }
                                 .frame(maxWidth: .infinity)
                                 .padding(.Spacing.space12)
-                                .background(.gray)
+                                .background(.removeButton)
                                 .cornerRadius(12)
+                                .shadow(radius: 2)
                                 .padding(.horizontal, .Spacing.space24)
                                 .padding(.top, .Spacing.space24)
-                                .opacity(0.5)
+
                             }
 
                         }

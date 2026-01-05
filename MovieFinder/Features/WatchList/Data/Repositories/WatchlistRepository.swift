@@ -8,6 +8,7 @@
 import Foundation
 import SwiftData
 
+@MainActor
 protocol WatchlistRepositoryProtocol {
     func addToWatchlist(_ movie: MovieDetail) async throws
     func removeFromWatchlist(id: Int) async throws
@@ -26,7 +27,7 @@ extension WatchlistRepositoryProtocol {
     }
 }
 
-@MainActor
+
 final class WatchlistRepository: WatchlistRepositoryProtocol {
     private let dataSource: WatchlistDataSource
 

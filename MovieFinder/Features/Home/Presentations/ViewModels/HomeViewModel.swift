@@ -25,14 +25,16 @@ class HomeViewModel: ObservableObject {
     }
 
     func loadMovies() async {
+        // Only load if data doesn't exist yet
+        guard nowShowing == nil || popular == nil else { return }
+        
         isLoading = true
-        defer { isLoading = false }  // ใช้ defer เพื่อให้แน่ใจว่า isLoading จะถูกเปลี่ยนเป็น false เสมอ
+        defer { isLoading = false }
 
         async let nowShowingTask = fetchNowShowing.execute(params: MovieRequestParams(page: 1))
         async let popularTask = fetchPopular.execute(params: MovieRequestParams(page: 1))
 
         do {
-            // รอผลลัพธ์ทั้งสองอย่างพร้อมกัน
         let (nowShowingResponse, popularResponse) = try await (
                 nowShowingTask, popularTask
             )
@@ -40,7 +42,6 @@ class HomeViewModel: ObservableObject {
             self.popular = popularResponse
         } catch {
             print("Error fetching movies: \(error)")
-            // อาจจะมีการจัดการ error ที่ดีกว่านี้
         }
     }
 }

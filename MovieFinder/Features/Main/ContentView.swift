@@ -27,18 +27,6 @@ struct ContentView: View {
                 }
                 .tag(Tab.home)
 
-            VStack {
-                Image(systemName: "globe")
-                    .imageScale(.large)
-                    .foregroundStyle(.tint)
-                Text("Hello, world!")
-            }
-            .padding()
-            .tabItem {
-                Label("Search", systemImage: "magnifyingglass")
-            }
-            .tag(Tab.search)
-
             WatchlistView()
                 .tabItem {
                     Label("WatchList", systemImage: "person.circle")

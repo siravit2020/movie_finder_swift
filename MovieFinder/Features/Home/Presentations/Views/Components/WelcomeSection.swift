@@ -13,16 +13,16 @@ struct AccountSection: View {
     var body: some View {
         HStack {
             HStack {
-                Avatar(imageURL: "https://picsum.photos/200")
+                AppIconCircle()
                     .padding(.trailing, .Spacing.space8, )
                 VStack(
                     alignment: HorizontalAlignment.leading,
                     spacing: .Spacing.space4
                 ) {
-                    Text("Welcome back").title2Style().fontWeight(
+                    Text("Welcome").title2Style().fontWeight(
                         .regular
                     )
-                    Text("Siravit").headlineStyle()
+                    Text("Movie finder").headlineStyle()
                 }
             }
             Spacer()

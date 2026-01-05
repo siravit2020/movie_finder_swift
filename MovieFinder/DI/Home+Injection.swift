@@ -29,7 +29,7 @@ extension Container {
                 fetchNowShowing: self.fetchNowShowingUseCase(),
                 fetchPopular: self.fetchPopularUseCase()
             )
-        }
+        }.singleton
     }
 
     var nowShowingMoviesViewModel: Factory<NowShowingMoviesViewModel> {

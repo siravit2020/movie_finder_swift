@@ -1,0 +1,14 @@
+//
+//  Config.xcconfig.example
+//  MovieFinder
+//
+//  Example configuration file
+//  Copy this file to Config.xcconfig and fill in your actual API keys
+//
+
+SLASH = /
+
+// Get your API key from https://www.themoviedb.org/settings/api
+API_KEY = YOUR_TMDB_API_KEY_HERE
+API_BASE_URL = https:$(SLASH)$(SLASH)api.themoviedb.org/3/
+API_BASE_IMAGE_URL = https:$(SLASH)$(SLASH)image.tmdb.org/t/p/

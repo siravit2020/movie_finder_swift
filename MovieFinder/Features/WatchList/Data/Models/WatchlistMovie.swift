@@ -36,7 +36,6 @@ final class WatchlistMovie {
         self.addedDate = addedDate
     }
 
-    // Convenience initializer จาก Movie entity
     convenience init(from movie: Movie, addedDate: Date = Date.now) {
         self.init(
             id: movie.id,

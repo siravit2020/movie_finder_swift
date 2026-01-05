@@ -1,6 +1,8 @@
-# Configuration files
+# Configuration files (keep example files)
 Config.xcconfig
+MovieFinder/Config.xcconfig
 *.xcconfig
+!*.xcconfig.example
 
 # Xcode
 ## Build generated
